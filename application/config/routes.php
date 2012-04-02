@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "backoffice/login";
+$route['default_controller'] = "cms";
 $route['404_override'] = '';
 
 
