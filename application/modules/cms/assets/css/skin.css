@@ -318,7 +318,7 @@ code
 
 #featured .label_title
 {
-	color: #555;
+	color: #FFDE00;
 	font-size: 14px;
 }
 #fetured_items_content .caption
@@ -359,6 +359,13 @@ code
 #others
 {
 	border-top: solid 1px #222;
+}
+#others .label_title
+{
+	color: #FFDE00;
+	font-size: 14px;
+	margin-left: 30px;
+	margin-bottom: 5px;
 }
 #slide_items  .item_title
 {
@@ -408,7 +415,7 @@ code
 }
 #latest_news .label_title
 {
-	color: #555;
+	color: #FFDE00;
 	font-size: 14px;
 }
 #latest_news .item_title, #latest_news .item_title a
@@ -466,7 +473,7 @@ code
 }
 .text .label_title
 {
-	color: #555;
+	color: #FFDE00;
 	font-size: 14px;
 }
 .text .item_title, .text .item_title a
@@ -501,7 +508,7 @@ code
 
 #categories .label_title, #archives .label_title
 {
-	color: #555;
+	color: #FFDE00;
 	font-size: 14px;
 }
 #categories li a, #archives li a
@@ -606,7 +613,7 @@ code
 
 #about .label_title
 {
-	color: #555;
+	color: #FFDE00;
 	font-size: 14px;
 }
 #life .heading
@@ -658,7 +665,7 @@ code
 }
 #blog .entry .item_title, #blog .entry .item_title a
 {
-	color: #ccc;
+	color: #FFDE00;
 	font-size: 18px;
 	font-weight: normal;
 }
@@ -676,7 +683,7 @@ code
 }
 #posts .label_title
 {
-	color: #555;
+	color: #FFDE00;
 	font-size: 14px;
 }
 #slide_posts

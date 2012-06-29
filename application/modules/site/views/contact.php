@@ -1,28 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-	<title>parker&amp;kent</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Language" content="en" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	
-	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="css/skin.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="jscript/prettyPhoto/css/prettyPhoto.css" charset="utf-8" />
-	
-	<!--[if IE 6]>
-		<script type="text/javascript" src="jscript/belated_png.js"></script>
-		<script type="text/javascript">
-			DD_belatedPNG.fix(".logo a, #logo_background img, .thumbs_slide, .thumbs_slide img, .content_label img, .sidebar_label img");
-		</script>
-	<![endif]-->
-	
-	<script type="text/javascript" src="jscript/jquery.js"></script>
-	<script type="text/javascript" src="jscript/prettyPhoto/js/jquery.prettyPhoto.js" charset="utf-8"></script>
-	<script type="text/javascript" src="jscript/easing.js"></script>
-	<script type="text/javascript" src="jscript/pk.js"></script>
+<title>Altasbusiness</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="en" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<?php echo css_asset('style.css', 'cms');?>
+<?php echo css_asset('skin.css', 'cms');?>
+<?php echo css_asset('prettyPhoto/css/prettyPhoto.css', 'cms');?>
+
+<!--[if IE 6]>
+<script type="text/javascript" src="jscript/belated_png.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix(".logo a, #logo_background img, #featured, .numbers li,
+.content_label img, .sidebar_label img");
+</script>
+<![endif]-->
+
+<?php echo js_asset('jquery.js', 'cms');?>
+<?php echo js_asset('prettyPhoto/js/jquery.prettyPhoto.js', 'cms');?>
+<?php echo js_asset('easing.js', 'cms');?>
+<?php echo js_asset('swfobject.js', 'cms');?>
+<?php echo js_asset('pk.js', 'cms');?>
+
+<script type="text/javascript">
+IMAGE_URL = "<?php echo image_asset_url('', 'cms');?>";
+
+$(function() 
+{
+    jQuery("#menu li:eq(0)").addClass("current");
+});
+</script>
 </head>
 
 <body>
@@ -311,37 +320,7 @@
 	</div>
 	<!--[if !IE]>end #main<![endif]-->
 	
-	<!--[if !IE]>start #footer<![endif]-->
-	<div class="wrapper bottom">
-		<div class="container">
-			<div id="footer">
-				<div id="footer_content">
-					<ul>
-						<li>Simply Theme</li>
-						<li>Forest street, 102</li>
-						<li>Bern - Switzerland</li>
-						<li><a href="mailto:info@simply.com">info@simply.com</a></li>
-					</ul>
-					<div id="follow_me">
-						<h5>Follow Me</h5>
-						<a href="#" title=""><img src="images/social_network/twitter.jpg" alt="twitter" /></a>
-						<a href="#" title=""><img src="images/social_network/facebook.jpg" alt="facebook" /></a>
-						<a href="#" title=""><img src="images/social_network/feed.jpg" alt="feed" /></a>
-					</div>
-				</div>
-				<div id="newsletter">
-					<form action="" method="get">
-						<p>
-							<input type="text" class="input_newsletter" name="search" value="Enter your email" onfocus="if (this.value == 'Enter your email') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter your email';}" />
-							<input type="image" src="images/skin/button_newsletter.jpg" alt="Submit" />
-						</p>
-					</form>
-					<p class="note">Lorem ipsum dolor sit amet, consectetur adipisici elit... sed eiusmod tempor incidunt ut labore et dolore!</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--[if !IE]>end #footer<![endif]-->
-
+	
+<?php $this->load->view('footer') ?>
 </body>
 </html>

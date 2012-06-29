@@ -76,7 +76,7 @@ class Site extends MX_Controller
     
     function contact()
     {
-        $this->load->view('contact_us', $data);
+        $this->load->view('contact', $data);
     }   
     
     // ------------------------------------------------------------------------

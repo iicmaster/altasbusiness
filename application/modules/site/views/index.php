@@ -18,7 +18,6 @@ DD_belatedPNG.fix(".logo a, #logo_background img, #featured, .numbers li,
 </script>
 <![endif]-->
 
-<script type="text/javascript">IMAGE_URL = "<?php echo image_asset_url('', 'cms');?>";</script>
 <?php echo js_asset('jquery.js', 'cms');?>
 <?php echo js_asset('prettyPhoto/js/jquery.prettyPhoto.js', 'cms');?>
 <?php echo js_asset('easing.js', 'cms');?>
@@ -26,7 +25,10 @@ DD_belatedPNG.fix(".logo a, #logo_background img, #featured, .numbers li,
 <?php echo js_asset('pk.js', 'cms');?>
 
 <script type="text/javascript">
-jQuery(document).ready(function() {
+IMAGE_URL = "<?php echo image_asset_url('', 'cms');?>";
+
+$(function() 
+{
     jQuery("#menu li:eq(0)").addClass("current");
 });
 </script>
