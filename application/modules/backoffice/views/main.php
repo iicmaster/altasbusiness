@@ -1,4 +1,5 @@
 <?php 
+// Load language
 $this->config->load('../../modules/backoffice/config/config');
 $this->lang->load('../../../modules/backoffice/language/'.$this->config->item('backoffice_language').'/backoffice', $this->config->item('backoffice_language'));
 ?>
