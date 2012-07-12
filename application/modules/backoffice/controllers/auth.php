@@ -1,28 +1,21 @@
 <?php
-class Login extends MX_Controller 
+class Auth extends IIC_Controller 
 {
 	// ------------------------------------------------------------------------
-	// Constructor
+	// PAGE
 	// ------------------------------------------------------------------------
 	
-	function __construct()
-	{
-		parent::__construct();
-		
-		// Load language
-		$this->config->load('../../modules/backoffice/config/config');
-		$this->lang->load(
-							'../../../modules/backoffice/language/'.
-							$this->config->item('backoffice_language').'/backoffice', 
-							$this->config->item('backoffice_language')
-						  );
-		
-		// Load model
-		$this->load->model('theme_model');
+	/**
+	 * Main page
+	 *
+	 * @access	public
+	 */
+	  
+	function index($error_msg = NULL)
+	{	
+		$this->login($error_msg);
 	}
 	
-	// ------------------------------------------------------------------------
-	// Page
 	// ------------------------------------------------------------------------
 	
 	/**
@@ -31,7 +24,7 @@ class Login extends MX_Controller
 	 * @access	public
 	 */
 	  
-	function index($error_msg = NULL)
+	function login($error_msg = NULL)
 	{	
 		$this->load->model('theme_model');
 		
@@ -44,8 +37,9 @@ class Login extends MX_Controller
 		
 		$_data['title'] = 'Login';
 		$_data['error_msg'] = $error_msg;
+		$_data['form_target'] = 'backoffice/auth/validate';
 		
-		$this->load->view('login_dialog', $_data);	
+		$this->load->view('login', $_data);	
 	}
 	
 	// ------------------------------------------------------------------------
@@ -68,14 +62,14 @@ class Login extends MX_Controller
 		// Set content
 		$_data['title']	= $this->lang->line('dialog_security_system');
 		$_data['message'] = '<li>'.$this->lang->line('dialog_logout_success').'</li>';
-		$_data['url_target'] = index_page().'/backoffice/login';
-		$_data['button_text'] = '';
+		$_data['url_target'] = index_page().'/backoffice/auth/login';
+		$_data['button_text'] = $this->lang->line('ok');
 		
 		$this->load->view('report_dialog', $_data);
 	}
 	
 	// ------------------------------------------------------------------------
-	// Function
+	// FUNCTION
 	// ------------------------------------------------------------------------
 	
 	/**
@@ -83,29 +77,58 @@ class Login extends MX_Controller
 	 *
 	 * @access	public
 	 */
-	  
+  
 	function validate()
 	{
 		$this->load->model('user_model');
-		$_validation = $this->user_model->validate();
+		$_validation = $this->user_model->validate($this->input->post('username'), $this->input->post('password'));
 		
 		if($_validation)
 		{
 			// Get user data
 			$_user = $this->user_model->get_detail_by_username($this->input->post('username'));		
 			
+			//print_array($_user);
+			//exit();
+			
 			// Set user session
-			$this->user_model->set_session($_user);		
+			$this->set_session($_user);		
 			
 			redirect('backoffice');
 		}
 		else
 		{
-			$_error_msg = 'Incorrect Username or Password';
+			$_error_msg = $this->lang->line('dialog_login_error');
 			$this->index($_error_msg);
 		}
 	}
 	
+	// ------------------------------------------------------------------------
+	
+	 
+	/**
+	 * Set user session
+	 *
+	 * @access	public
+	 * @param 	array	$data
+	 */
+
+	function set_session($data)  
+	{  	
+		$_session = array(
+							'id'			=> $data['id'],
+							'name'			=> $data['name'],
+							'username'		=> $data['username'],
+							'id_group'		=> $data['id_group'],
+							'group'			=> $data['group'],
+							'id_role'		=> $data['id_role'],
+							'role'			=> $data['role'],
+							'login_status'	=> TRUE
+						 );
+					 
+		$this->session->set_userdata($_session);
+	}
+
 	// ------------------------------------------------------------------------
 	
 	/**
@@ -138,10 +161,10 @@ class Login extends MX_Controller
 			$_data['controller'] = 'login';
 			$_data['page'] = 'report_dialog';
 		
-			$_data['title'] = 'Access denide';
-			$_data['message'] = '<li>'.$this->lang->line('dialog_permission_denied').'</li>'.
-								'<li>'.$this->lang->line('dialog_please_login').'</li>';
-			$_data['url_target'] = index_page().'/backoffice/login';
+			$_data['title'] = $this->lang->line('dialog_security_system');
+			$_data['message'] = '<li>'.$this->lang->line('dialog_session_expire').'</li>'.
+								'<li>'.$this->lang->line('dialog_please_login_again').'</li>';
+			$_data['url_target'] = index_page().'/backoffice/auth/login';
 			$_data['button_text'] = $this->lang->line('button_ok');
 			
 			$this->load->view('report_dialog.php', $_data);	
@@ -167,5 +190,5 @@ class Login extends MX_Controller
 }
 
 
-/* End of file login.php */
-/* Location: ./application/modules/backoffice/controllers/login.php */
+/* End of file auth.php */
+/* Location: ./application/modules/backoffice/controllers/auth.php */

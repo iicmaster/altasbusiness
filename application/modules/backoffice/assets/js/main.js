@@ -4,7 +4,6 @@
 
 $(function()
 {
-
 	// ------------------------------------------------------------------------
 	// Search Section - Action
 	// ------------------------------------------------------------------------
@@ -35,7 +34,7 @@ $(function()
 			arrow.html('&#x25C0;')
 		}
 	});
-
+	
 	// ------------------------------------------------------------------------
 	// Input[checkbox] - Action
 	// ------------------------------------------------------------------------
@@ -54,6 +53,7 @@ $(function()
 			$('tbody').find('tr').removeClass('checked');
 		}
 	});
+	
 	/* Hilite selected row */
 
 	$('tbody').find('input[type=checkbox]').live('click', function()
@@ -156,87 +156,105 @@ $(function()
 
 	$('#dialog_alert').dialog(
 	{
-		title : 'Alert',
-		autoOpen : false,
-		draggable : false,
-		resizable : false,
-		width : 400,
-		height : 'auto',
-		modal : true,
-		buttons :
-		{
-			OK : function()
-			{
-				$(this).dialog("close");
-			}
-		}
+		title		: LANG_ALERT,
+		autoOpen	: false,
+		draggable	: false,
+		resizable	: false,
+		width		: 400,
+		height		: 'auto',
+		modal		: true,
+		buttons		: [
+					  	  {
+							  text	: LANG_OK,
+							  click	: function()
+									  {
+										  $(this).dialog("close");
+									  }
+						  }
+					  ]
 	});
 
 	/* Dialog create */
 
 	$('#dialog_create').dialog(
 	{
-		title : 'Create',
-		autoOpen : false,
-		draggable : false,
-		resizable : false,
-		width : 'auto',
-		height : 'auto',
-		modal : true,
-		buttons :
-		{
-			Save : function()
-			{
-				create_content();
-			}
-		}
+		title		: LANG_CREATE,
+		autoOpen	: false,
+		draggable	: false,
+		resizable	: false,
+		width		: 'auto',
+		height		: 'auto',
+		modal		: true,
+		buttons		: [
+					  	  {
+							  text	: LANG_SAVE,
+							  click	: function()
+									  {
+										  create_content();
+									  }
+						  }
+					  ]
 	});
 
 	// Set icon
-	$('#dialog_create').next().find('button').removeClass('ui-button-text-only').addClass('ui-button-text-icon-primary').prepend('<span class="ui-button-icon-primary ui-icon ui-icon-disk"/>');
+	$('#dialog_create')
+	.next()
+	.find('button')
+	.removeClass('ui-button-text-only')
+	.addClass('ui-button-text-icon-primary')
+	.prepend('<span class="ui-button-icon-primary ui-icon ui-icon-disk"/>');
 
 	/* Dialog update */
 
 	$('#dialog_update').dialog(
 	{
-		title : 'Edit',
-		autoOpen : false,
-		draggable : false,
-		resizable : false,
-		minWidth : 400,
-		width : 'auto',
-		height : 'auto',
-		modal : true,
-		buttons :
-		{
-			Save : function()
-			{
-				update_content();
-			}
-		}
+		title		: LANG_EDIT,
+		autoOpen	: false,
+		draggable	: false,
+		resizable	: false,
+		minWidth	: 400,
+		width		: 'auto',
+		height		: 'auto',
+		modal		: true,
+		buttons 	: [
+					  	  {
+							  text	: LANG_SAVE,
+							  click	: function()
+									  {
+										  update_content();
+									  }
+						  }
+					  ]
 	});
 
 	// Set icon
-	$('#dialog_update').next().find('button').removeClass('ui-button-text-only').addClass('ui-button-text-icon-primary').prepend('<span class="ui-button-icon-primary ui-icon ui-icon-disk"/>');
+	$('#dialog_update')
+	.next()
+	.find('button')
+	.removeClass('ui-button-text-only')
+	.addClass('ui-button-text-icon-primary')
+	.prepend('<span class="ui-button-icon-primary ui-icon ui-icon-disk"/>');
 
 	/* Dialog delete */
 
 	$('#dialog_delete').dialog(
 	{
-		title : 'Confirm delete content',
-		autoOpen : false,
-		draggable : false,
-		resizable : false,
-		width : 400,
-		height : 'auto',
-		modal : true,
-		buttons :
-		{
-			Delete : function()
-			{
-				delete_content();
-			}
-		}
+		title 		: 'Confirm delete content',
+		autoOpen 	: false,
+		draggable 	: false,
+		resizable 	: false,
+		width 		: 400,
+		height 		: 'auto',
+		modal 		: true,
+		buttons 	: [
+					  	  {
+							  text	: LANG_SAVE,
+							  click	: function()
+									  {
+										  delete_content();
+									  }
+						  }
+					  ]
 	});
 
 	// ------------------------------------------------------------------------
@@ -278,7 +296,7 @@ $(function()
 });
 
 // ------------------------------------------------------------------------
-// Function
+// FUNCTION
 // ------------------------------------------------------------------------
 
 /**
@@ -328,6 +346,79 @@ function get_update_form(url)
 // ------------------------------------------------------------------------
 
 /**
+ * Get content via ajax
+ */	
+
+function get_content(limit, offset)
+{
+	// Show preload
+	$('#preload').slideDown('fast');
+	
+	// Setup variable
+	var limit	= limit || 25;
+	var offset	= offset || (limit * parseInt($('.pagination').find('strong').html())) - limit;
+	
+	offset = (isNaN(offset)) ? 0 : offset;
+	
+	var url = URL_SERVER + $('#config_uri_list').val() + '/' + limit + '/' + offset;
+	var data = {
+					'limit'		: limit,
+					'offset' 	: offset
+			   };
+			   
+	// Setup ajax
+	$.post(url, data, function(response)
+	{
+		update_table_content(response);	
+	}, "json")
+	.success(function() 
+	{ 
+		$('#preload').slideUp('fast'); 
+	})
+	.error(function() 
+	{  
+		var msg = 'Error: list_content(' + limit + ', ' + offset + ')';
+		$('#dialog_alert_message').html(msg);
+		$('#dialog_alert').dialog('open');
+	});
+}
+
+// ------------------------------------------------------------------------
+
+/**
+ * Generate HTML tag and replace in <tbody>
+ * 
+ * @param json content
+ */	
+
+function update_table_content(content)
+{
+	if(content != '')
+	{
+		 var list = generate_html(content);
+		
+		// Uncheck select all   
+		$('#select_all').removeAttr('checked');
+		
+		// Update table content			
+		$("tbody").html(list);
+	}
+	else
+	{
+		// Uncheck select all   
+		$('#select_all').removeAttr('checked');
+		
+		// Count table column
+		var total_column = $('thead th').length;
+		
+		// Update table content			
+		$("tbody").html('<td align="center" colspan="'+total_column+'">'+LANG_NO_RESULT_FOUND+'</td>');	
+	}
+}
+
+// ------------------------------------------------------------------------
+
+/**
  * Create content via ajax
  */
 
@@ -369,44 +460,6 @@ function create_content()
 	{
 		dialog.find('form').ajaxSubmit(config);
 	}
-}
-
-// ------------------------------------------------------------------------
-
-/**
- * Get content via ajax
- */	
-
-function get_content()
-{
-
-	// Show preload
-	$('#preload').slideDown('fast');
-	
-	// Setup variable
-	var limit	= 25;
-	var offset	= (limit * parseInt($('.pagination').find('strong').html())) - limit;
-	
-	offset = (isNaN(offset)) ? 0 : offset;
-	
-	var url = URL_SERVER + $('#config_uri_list').val();
-	var data = {
-					'limit'		: limit,
-					'offset' 	: offset
-			   };
-			   
-	// Setup ajax
-	$.post(url, data, function(response)
-	{
-		generate_html(response);	
-	}, "json")
-	.success(function() { $('#preload').slideUp('fast'); })
-	.error(function() 
-	{  
-		var msg = 'Error: list_content(' + limit + ', ' + offset + ')';
-		$('#dialog_alert_message').html(msg);
-		$('#dialog_alert').dialog('open');
-	});
 }
 
 // ------------------------------------------------------------------------
@@ -509,7 +562,7 @@ function search_content()
 	// Setup ajax
 	$.post(url, data, function(response)
 	{
-		generate_html(response);
+		update_table_content(response);
 	}, "json")
 	.error(function() 
 	{  

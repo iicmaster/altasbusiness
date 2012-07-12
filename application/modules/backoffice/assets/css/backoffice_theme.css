@@ -4,7 +4,8 @@
 
 #header
 {
-	background: #444444;
+	background: #D93A00 url(../img/bg_header.jpg);	
+	background-size: cover;
 	color: #FFF;
 	height: 80px;
 	text-align: right;
@@ -109,7 +110,8 @@
 #footer
 {
 	/*background: url(../img/bg_menu_main.png) repeat-x;*/
-	background: #444444;
+	background: #D93A00 url(../img/bg_header.jpg);	
+	background-size: cover;
 	color: #FFF;
 	font-size: 12px;
 	padding: 5px;

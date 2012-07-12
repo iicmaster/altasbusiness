@@ -28,7 +28,8 @@ class Theme_model extends CI_Model
 		echo '
 				#head_section
 				{
-					background: ' . $theme['head_bg_color'] . ';	
+					background: ' . $theme['head_bg_color'] . ' url(../img/bg_header.jpg);	
+					background-size: cover;
 					color: ' . $theme['head_text_color'] . ';
 					text-align: right;
 					padding: 10px;
