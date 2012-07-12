@@ -1,4 +1,11 @@
-.project
+*/config/development
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
+
+*/*.mp*	
+*.mp*
 
 *.bak
 *.lck
@@ -6,3 +13,5 @@
 
 Thumbs.db
 _compareTemp/
+
+.project
