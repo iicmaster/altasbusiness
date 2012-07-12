@@ -176,6 +176,19 @@ class IIC_Controller extends MX_Controller {
 	}
 	
 	// ------------------------------------------------------------------------
+	
+	/**
+	 * Module page for display backoffice module
+	 *
+	 * @access	public
+	 */
+	
+	function get_menu()
+	{
+		$this->load->view('menu');
+	}
+	
+	// ------------------------------------------------------------------------
 }
 
 

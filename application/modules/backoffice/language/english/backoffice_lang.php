@@ -12,6 +12,29 @@ $lang['in'] = 'in';
 $lang['login'] = 'Login';
 $lang['logout'] = 'Logout';
 $lang['no_result_found'] = 'No result found';
+$lang['ok'] = 'ok';
+$lang['save'] = 'Save';
+$lang['user'] = 'User';
+
+// -------------------------------------------------------------------
+// PAGE
+// -------------------------------------------------------------------
+
+$lang['page_user'] = 'System Users';
+$lang['page_group'] = 'Group';
+$lang['page_role'] = 'Role';
+$lang['page_log'] = 'System Log';
+
+// -------------------------------------------------------------------
+// FORM
+// -------------------------------------------------------------------
+
+$lang['name'] = 'Name';
+$lang['description'] = 'Description';
+$lang['username'] = 'Username';
+$lang['password'] = 'Password';
+$lang['status'] = 'Status';
+$lang['date'] = 'Date';
 
 /*
 | -------------------------------------------------------------------

@@ -36,7 +36,6 @@ class Backoffice extends MX_Controller
 		$_data['navigator'] = array();
 		array_push($_data['navigator'], array('label' => $this->lang->line('home'),	'link' => 'backoffice'));
 		
-		
 		// Display
 		$this->load->view('main', $_data);
 	}
