@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Cms extends MX_Controller 
+class Cms extends IIC_Controller 
 {	
 	// ------------------------------------------------------------------------
 	// Constructor
@@ -9,6 +9,13 @@ class Cms extends MX_Controller
 	function __construct()
 	{
 		parent::__construct();
+		
+		// Load language
+		$this->lang->load(
+							'../../../modules/cms/language/'.
+							$this->config->item('backoffice_language').
+							'/cms', $this->config->item('cms_language')
+						 );
 	}
 	
 	// ------------------------------------------------------------------------
@@ -21,7 +28,6 @@ class Cms extends MX_Controller
 	
 	function index()
 	{
-		//echo '555';
 		$this->load->view('index');
 	}	
 }
