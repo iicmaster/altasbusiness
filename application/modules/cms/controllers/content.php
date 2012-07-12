@@ -1,5 +1,5 @@
 <?php
-class Category extends IIC_Controller 
+class Content extends IIC_Controller 
 {	
 	// ------------------------------------------------------------------------
 	// Constructor
@@ -17,11 +17,11 @@ class Category extends IIC_Controller
 						 );
 		
 		// Load model
-		$this->load->model('category_model');
+		$this->load->model('content_model');
 		
 		// Setup variable
-		$this->content_form = 'category_form';
-		$this->content_model = $this->category_model;
+		$this->content_form = 'content_form';
+		$this->content_model = $this->content_model;
 	}
 	
 	// ------------------------------------------------------------------------
@@ -41,11 +41,11 @@ class Category extends IIC_Controller
 		
 		// Set module
 		$_data['module']		= 'cms';
-		$_data['controller']	= 'category';
+		$_data['controller']	= 'content';
 		$_data['ajax_uri']		= 'content';
 		$_data['template']		= 'backoffice/tpl_module_index';
-		$_data['page']			= 'category';
-		$_data['title']			= $this->lang->line('content_category');
+		$_data['page']			= 'content';
+		$_data['title']			= $this->lang->line('content_content');
 		
 		// Set navigator
 		$_data['navigator'] = array();
@@ -58,15 +58,15 @@ class Category extends IIC_Controller
 												'link'	=> '#'
 											  ));
 		array_push($_data['navigator'], array(
-												'label' => $this->lang->line('content_category'),	
-												'link'	=> 'cms/category'
+												'label' => $this->lang->line('content_content'),	
+												'link'	=> 'cms/content'
 											  ));
 		
 		// Set table haed
 		$_data['th'] = array();
 		array_push($_data['th'], array(
 										'axis'			=>'name',		
-										'label'			=>$this->lang->line('content_category'),	
+										'label'			=>$this->lang->line('content_content'),	
 										'is_criteria'	=> TRUE
 									  ));
 		array_push($_data['th'], array(
@@ -83,5 +83,5 @@ class Category extends IIC_Controller
 }
 
 
-/* End of file category.php */
-/* Location: application/modules/cms/controllers/category.php */
+/* End of file content.php */
+/* Location: application/modules/cms/controllers/content.php */

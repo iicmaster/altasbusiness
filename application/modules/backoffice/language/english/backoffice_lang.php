@@ -15,6 +15,8 @@ $lang['no_result_found'] = 'No result found';
 $lang['ok'] = 'ok';
 $lang['save'] = 'Save';
 $lang['user'] = 'User';
+$lang['enable'] = 'Enable';
+$lang['disable'] = 'Disable';
 
 // -------------------------------------------------------------------
 // PAGE
