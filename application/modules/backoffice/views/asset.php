@@ -12,6 +12,9 @@ LANG_SAVE = '<?php echo $this->lang->line('save') ?>';
 LANG_USERNAME = '<?php echo $this->lang->line('username') ?>';
 LANG_PASSWORD = '<?php echo $this->lang->line('password') ?>';
 LANG_NO_RESULT_FOUND = '<?php echo $this->lang->line('no_result_found') ?>';
+
+LANG_ENABLE = '<?php echo $this->lang->line('enable') ?>';
+LANG_DISABLE = '<?php echo $this->lang->line('disable') ?>';
 </script>
 
 <!--jQuery-->

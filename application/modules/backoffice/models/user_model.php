@@ -13,49 +13,64 @@ class User_model extends IIC_Model
 	
 	// ------------------------------------------------------------------------
 	
-	/**
-	 * Get user list
-	 *
-	 * @access	public
-	 * @param 	integer		$limit
-	 * @param 	integer		$offset		
-	 * @return	array
-	 */
-	
-	function list_content($limit = '', $offset = '')
+    /**
+     * Get user list
+     *
+     * @access  public
+     * @param   int     $limit
+     * @param   int     $offset    
+     * @param   string  $select     
+     * @param   array   $where     
+     * @param   string	$order_by     
+     * @param   string	$order_direction      
+     * @return  array
+     */
+    
+    function list_content($limit = 25, $offset = 0, $select = NULL, $where = NULL, $order_by = NULL, $order_direction = 'ASC')
 	{		
-		if($limit != '' && $offset != '')
+    	// Select
+    	if($select != '')
 		{
-			$_query = $this->db->get($this->table['main'], $limit, $offset);
-		}
-		else if($limit != '')
+			$this->db->select($select);
+		}  
+		
+    	// Where
+    	if(is_array($where))
 		{
-			$_query = $this->db->get($this->table['main'], $limit, 0);
-		}
+			$this->db->where($where);
+		}   
+		
+		// Ordering
+		if(is_null($order_by))
+		{
+			$this->db->order_by('id', 'DESC');
+		}  
 		else
 		{
-			$this->db->select(
-								$this->table['main'].'.id, '.
-								$this->table['main'].'.name, '.
-								$this->table['main'].'.username, '.
-								$this->table['group'].'.name as "group", '.
-								$this->table['role'].'.name as "role"'
-							 );
-							 
-			$this->db->join(
-								$this->table['group'], 
-								$this->table['main'].'.id_group = '.$this->table['group'].'.id'
-						   );
-			
-			$this->db->join(
-								$this->table['role'],
-								$this->table['main'].'.id_role = '.$this->table['role'].'.id'
-						   );
-						   
-			$_query = $this->db->get($this->table['main']);
+			$this->db->order_by($order_by, $order_direction);
 		}
 		
-		return $_query->result();
+		$this->db->select(
+							$this->table['main'].'.id, '.
+							$this->table['main'].'.name, '.
+							$this->table['main'].'.username, '.
+							$this->table['group'].'.name as "group", '.
+							$this->table['role'].'.name as "role"'
+						 );
+						 
+		$this->db->join(
+							$this->table['group'], 
+							$this->table['main'].'.id_group = '.$this->table['group'].'.id'
+					   );
+		
+		$this->db->join(
+							$this->table['role'],
+							$this->table['main'].'.id_role = '.$this->table['role'].'.id'
+					   );
+					   
+    	$_query = $this->db->get($this->table['main'], $limit, $offset);
+			
+		return $_query->result_array();
 	}
 
 	// ------------------------------------------------------------------------
@@ -151,6 +166,7 @@ class User_model extends IIC_Model
  	 *
  	 * @access	public
  	 */
+ 	 
  	function validate($username, $password)
 	{
 		$this->db->where('username', $username);

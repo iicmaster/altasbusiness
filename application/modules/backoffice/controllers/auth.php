@@ -116,7 +116,7 @@ class Auth extends IIC_Controller
 	function set_session($data)  
 	{  	
 		$_session = array(
-							'id'			=> $data['id'],
+							'id_user'		=> $data['id'],
 							'name'			=> $data['name'],
 							'username'		=> $data['username'],
 							'id_group'		=> $data['id_group'],
@@ -165,10 +165,9 @@ class Auth extends IIC_Controller
 			$_data['message'] = '<li>'.$this->lang->line('dialog_session_expire').'</li>'.
 								'<li>'.$this->lang->line('dialog_please_login_again').'</li>';
 			$_data['url_target'] = index_page().'/backoffice/auth/login';
-			$_data['button_text'] = $this->lang->line('button_ok');
+			$_data['button_text'] = $this->lang->line('ok');
 			
 			$this->load->view('report_dialog.php', $_data);	
-			
 			exit();
 		}
 	}

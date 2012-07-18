@@ -1,12 +1,5 @@
-<?php 
-// Load language
-$this->config->load('../../modules/backoffice/config/config');
-$this->lang->load(
-					'../../../modules/backoffice/language/'.
-					$this->config->item('backoffice_language').
-					'/backoffice', $this->config->item('backoffice_language')
-				 );
-				 
+<?php 	 
+date_default_timezone_set('Asia/Bangkok');
 $theme = Modules::run('backoffice/theme/get_theme');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

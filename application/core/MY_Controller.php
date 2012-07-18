@@ -15,8 +15,14 @@ class MY_Controller extends MX_Controller {
 
 class IIC_Controller extends MX_Controller {
 	
-	protected $content_form;
+	protected $module_config = array(
+										'module'		=> '',
+										'controller'	=> '',
+										'model'			=> '',
+										'form'			=> ''
+									);
 	protected $content_model;
+	protected $content_form;
 	
 	// ------------------------------------------------------------------------
 	// Constructor
@@ -27,12 +33,12 @@ class IIC_Controller extends MX_Controller {
 		parent::__construct();
 		
 		// Load language
-		$this->config->load('../../modules/backoffice/config/config');
+		/*$this->config->load('../../modules/backoffice/config/config');
 		$this->lang->load(
 							'../../../modules/backoffice/language/'.
 							$this->config->item('backoffice_language').
 							'/backoffice', $this->config->item('backoffice_language')
-						 );
+						 );*/
 	}
 	
 	// ------------------------------------------------------------------------
@@ -62,6 +68,8 @@ class IIC_Controller extends MX_Controller {
 	
 	function get_content_form($id = NULL)
 	{
+		$this->content_form = ($this->module_config['form'] != '') ? $this->module_config['form'] : $this->content_form;
+		
 		$_data = ($id != NULL) ? $this->content_model->get_content($id) : NULL;	
 		
 		$this->load->view($this->content_form, $_data);	
@@ -130,12 +138,6 @@ class IIC_Controller extends MX_Controller {
 		unset($_data['id']);
 				 
 		$this->content_model->update_content($_id, $_data);
-		
-		// Get content data for update session
-		$_content = $this->content_model->get_detail_by_contentname($this->input->post('contentname'));		
-		
-		// Update content session
-		$this->content_model->set_session($_content);	
 	}
 	
 	// ------------------------------------------------------------------------

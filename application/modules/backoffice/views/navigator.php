@@ -6,6 +6,7 @@
 </div>
 <div id="address">
 	<?php
+	
 	$address = '';
 	
 	if(isset($navigator))
@@ -18,7 +19,7 @@
 			}
 			else 
 			{
-				$address .= '&nbsp;&nbsp;<span style="font-size: 0.4em">&#x25B6;</span>&nbsp;&nbsp;'.anchor($data['link'], $data['label']);
+				$address .= '&nbsp;&nbsp;<span class="text_9">&#x25B6;</span>&nbsp;&nbsp;'.anchor($data['link'], $data['label']);
 			}
 		}
 	}

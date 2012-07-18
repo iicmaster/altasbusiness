@@ -17,11 +17,11 @@ class Content extends IIC_Controller
 						 );
 		
 		// Load model
-		$this->load->model('content_model');
+		$this->load->model('content_model', 'cms_content_model');
 		
 		// Setup variable
 		$this->content_form = 'content_form';
-		$this->content_model = $this->content_model;
+		$this->content_model = $this->cms_content_model;
 	}
 	
 	// ------------------------------------------------------------------------
@@ -44,8 +44,8 @@ class Content extends IIC_Controller
 		$_data['controller']	= 'content';
 		$_data['ajax_uri']		= 'content';
 		$_data['template']		= 'backoffice/tpl_module_index';
-		$_data['page']			= 'content';
-		$_data['title']			= $this->lang->line('content_content');
+		$_data['page']			= 'content_index';
+		$_data['title']			= $this->lang->line('content');
 		
 		// Set navigator
 		$_data['navigator'] = array();
@@ -58,21 +58,21 @@ class Content extends IIC_Controller
 												'link'	=> '#'
 											  ));
 		array_push($_data['navigator'], array(
-												'label' => $this->lang->line('content_content'),	
+												'label' => $this->lang->line('content'),	
 												'link'	=> 'cms/content'
 											  ));
 		
 		// Set table haed
 		$_data['th'] = array();
 		array_push($_data['th'], array(
-										'axis'			=>'name',		
-										'label'			=>$this->lang->line('content_content'),	
-										'is_criteria'	=> TRUE
+										'axis'			=>'date_create',	
+										'label'			=>$this->lang->line('date'),	
+										'is_criteria'	=> FALSE
 									  ));
 		array_push($_data['th'], array(
-										'axis'			=>'is_enable',	
-										'label'			=>$this->lang->line('status'),	
-										'is_criteria'	=> FALSE
+										'axis'			=>'topic',		
+										'label'			=>$this->lang->line('topic'),	
+										'is_criteria'	=> TRUE
 									  ));
 		
 		// Display

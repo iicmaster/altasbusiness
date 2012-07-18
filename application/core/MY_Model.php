@@ -9,6 +9,13 @@ class MY_Model extends CI_model {
 
 class IIC_Model extends MY_Model {
 	
+    public function __construct()
+    {
+        parent::__construct();
+    }
+	
+    // ------------------------------------------------------------------------
+	
     /**
      * Setup database
      */
@@ -42,7 +49,11 @@ class IIC_Model extends MY_Model {
      *
      * @access  public
      * @param   int     $limit
-     * @param   int     $offset     
+     * @param   int     $offset    
+     * @param   string  $select     
+     * @param   array   $where     
+     * @param   string	$order_by     
+     * @param   string	$order_direction      
      * @return  array
      */
     

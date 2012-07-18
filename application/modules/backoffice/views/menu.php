@@ -2,7 +2,7 @@
 	<li id="home"><?php echo anchor('backoffice', $this->lang->line('home')) ?></li>
 	
 	<!-- Institute modules -->
-	<?php echo Modules::run('cms/get_menu'); ?>
+	<?php echo Modules::run('institute/get_menu'); ?>
 	
 	<!-- Backoffice module -->
 	<li id="logout" class="float_r"><?php echo anchor('backoffice/auth/logout', $this->lang->line('logout')) ?></li>
