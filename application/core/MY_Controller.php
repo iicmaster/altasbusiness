@@ -33,12 +33,14 @@ class IIC_Controller extends MX_Controller {
 		parent::__construct();
 		
 		// Load language
-		/*$this->config->load('../../modules/backoffice/config/config');
+		$this->config->load('../../modules/backoffice/config/config');
 		$this->lang->load(
-							'../../../modules/backoffice/language/'.
-							$this->config->item('backoffice_language').
-							'/backoffice', $this->config->item('backoffice_language')
-						 );*/
+							'backoffice', 
+							$this->config->item('backoffice_language'), 
+							FALSE, 
+							TRUE, 
+							'application/modules/backoffice/'
+						 );
 	}
 	
 	// ------------------------------------------------------------------------
