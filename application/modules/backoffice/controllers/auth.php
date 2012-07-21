@@ -163,7 +163,7 @@ class Auth extends IIC_Controller
 		
 			$_data['title'] = $this->lang->line('dialog_security_system');
 			$_data['message'] = '<li>'.$this->lang->line('dialog_session_expire').'</li>'.
-								'<li>'.$this->lang->line('dialog_please_login_again').'</li>';
+								'<li>'.$this->lang->line('dialog_please_login').'</li>';
 			$_data['url_target'] = index_page().'/backoffice/auth/login';
 			$_data['button_text'] = $this->lang->line('ok');
 			

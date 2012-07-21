@@ -7,7 +7,7 @@ i.error
 	margin-left: 10px;
 }
 
-input.error, select.error + select
+input.error, textarea.error, select.error + select
 {
 	background-color: #FEE;
 	border: 1px solid #F00;

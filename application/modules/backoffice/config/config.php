@@ -10,7 +10,7 @@
 | - thai
 |
 */
-$config['backoffice_language']	= 'thai';
+$config['backoffice_language']	= 'english';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
