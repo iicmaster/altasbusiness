@@ -11,9 +11,11 @@ class Content extends IIC_Controller
 		
 		// Load language
 		$this->lang->load(
-							'../../../modules/cms/language/'.
-							$this->config->item('backoffice_language').
-							'/cms', $this->config->item('cms_language')
+							'cms', 
+							$this->config->item('cms_language'),
+							FALSE, 
+							TRUE, 
+							'application/modules/'.$this->module_config['module'].'/'
 						 );
 		
 		// Load model
@@ -52,15 +54,15 @@ class Content extends IIC_Controller
 		array_push($_data['navigator'], array(
 												'label'	=> $this->lang->line('home'),	
 												'link'	=> 'backoffice'
-											  ));
+											 ));
 		array_push($_data['navigator'], array(
 												'label' => $this->lang->line('cms'),	
 												'link'	=> '#'
-											  ));
+											 ));
 		array_push($_data['navigator'], array(
 												'label' => $this->lang->line('content'),	
 												'link'	=> 'cms/content'
-											  ));
+											 ));
 		
 		// Set table haed
 		$_data['th'] = array();

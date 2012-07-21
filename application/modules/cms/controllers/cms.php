@@ -12,9 +12,11 @@ class Cms extends IIC_Controller
 		
 		// Load language
 		$this->lang->load(
-							'../../../modules/cms/language/'.
-							$this->config->item('backoffice_language').
-							'/cms', $this->config->item('cms_language')
+							'cms', 
+							$this->config->item('backoffice_language'),
+							FALSE, 
+							TRUE, 
+							'application/modules/'.$this->module_config['module'].'/'
 						 );
 	}
 	

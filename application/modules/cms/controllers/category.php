@@ -13,7 +13,7 @@ class Category extends IIC_Controller
 		$this->lang->load(
 							'../../../modules/cms/language/'.
 							$this->config->item('backoffice_language').
-							'/cms', $this->config->item('cms_language')
+							'/cms', $this->config->item('backoffice_language')
 						 );
 		
 		// Load model
