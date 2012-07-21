@@ -10,11 +10,14 @@ class Sample extends IIC_Controller
 		parent::__construct();
 		
 		// Load model
-		$this->load->model('course_model');
+		$this->load->model('sample_model');
 		
-		// Setup variable
-		$this->content_form = 'course_form';
-		$this->content_model = $this->course_model;
+		// Set variable
+		$this->module_config['module'] = 'sample';
+		$this->module_config['controller'] = 'sample';
+		$this->module_config['form'] = 'sample_form';
+		
+		$this->content_model = $this->sample_model;
 	}
 	
 	// ------------------------------------------------------------------------
@@ -33,23 +36,50 @@ class Sample extends IIC_Controller
 		Modules::run('backoffice/auth/check_permission');	
 		
 		// Set module
-		$_data['module']		= '';
-		$_data['controller']	= '';
-		$_data['ajax_uri']		= '';
+		$_data['module']		= $this->module_config['module'];
+		$_data['controller']	= $this->module_config['module'];
+		$_data['ajax_uri']		= 'content';
 		$_data['template']		= 'backoffice/tpl_module_index';
-		$_data['page']			= '';
-		$_data['title']			= '';
+		$_data['page']			= 'sample';
+		$_data['title']			= $this->lang->line('sample_page');
 		
 		// Set navigator
 		$_data['navigator'] = array();
-		array_push($_data['navigator'], array('label' => $this->lang->line('home'),	'link' => 'backoffice'));
-		array_push($_data['navigator'], array('label' => 'หลักสูตร',					'link' => '#'));
-		array_push($_data['navigator'], array('label' => 'คอร์สเรียน',					'link' => 'institute/course'));
+		array_push($_data['navigator'], array(
+												'label'	=> $this->lang->line('home'),	
+												'link'	=> 'backoffice'
+											  ));
+		array_push($_data['navigator'], array(
+												'label' => $this->lang->line(''),	
+												'link'	=> ''
+											  ));
 		
 		// Set table haed
 		$_data['th'] = array();
-		array_push($_data['th'], array('axis'=>'name',		'label'=>'ระดับชั้น',	'is_criteria' => TRUE));
-		array_push($_data['th'], array('axis'=>'id_group',	'label'=>'สถานะ',	'is_criteria' => FALSE));
+		array_push($_data['th'], array(
+										'axis'			=>'name',		
+										'label'			=>$this->lang->line('content_category'),	
+										'is_criteria'	=> TRUE
+									  ));
+		array_push($_data['th'], array(
+										'axis'			=>'is_enable',	
+										'label'			=>$this->lang->line('status'),	
+										'is_criteria'	=> FALSE
+									  ));
+		
+		// Set pagination
+		$this->load->library('pagination');
+		
+		$_data['content']['total'] = $this->content_model->count_content();
+
+		$_config['base_url']	= site_url().'/'.$_data['module'].'/'.$_data['controller'].'/index/';
+		$_config['total_rows']	= $_data['content']['total'];
+		$_config['per_page']	= 25; 
+		$_config['uri_segment']	= 4;
+		
+		$this->pagination->initialize($_config); 
+		
+		$_data['pagination'] = $this->pagination->create_links();
 		
 		// Display
 		$this->load->view('backoffice/main', $_data);
@@ -74,5 +104,5 @@ class Sample extends IIC_Controller
 }
 
 
-/* End of file _sample_controller.php */
-/* Location: application/modules/sample/controllers/_sample_controller.php */
+/* End of file sample_controller.php */
+/* Location: application/modules/sample/controllers/sample.php */
