@@ -14,4 +14,4 @@ class Upload_model extends IIC_Model {
 
 
 /* End of file upload_model.php */
-/* Location: ./application/modules/upload/model/upload_model.php */
+/* Location: ./application/modules/backoffice/model/upload_model.php */

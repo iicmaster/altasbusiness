@@ -9,22 +9,19 @@ class Upload extends IIC_Controller
 	{
 		parent::__construct();
 		
-		// Load model
-		$this->load->model('upload_model');
-		
 		// Set variable
 		$this->module_config['module'] = 'upload';
 		$this->module_config['controller'] = 'upload';
 		$this->module_config['form'] = 'upload_form';
+		
+		// Load model
+		$this->load->model($this->module_config['controller'].'_model');
 		$this->content_model = $this->upload_model;
 		
 		// Load language
 		$this->lang->load(
-							$this->module_config['controller'], 
-							$this->config->item('backoffice_language'), 
-							FALSE, 
-							TRUE, 
-							'application/modules/'.$this->module_config['module'].'/'
+							$this->module_config['module'], 
+							$this->config->item('backoffice_language')
 						 );
 	}
 	
@@ -45,7 +42,7 @@ class Upload extends IIC_Controller
 		
 		// Set module
 		$_data['module']		= $this->module_config['module'];
-		$_data['controller']	= $this->module_config['module'];
+		$_data['controller']	= $this->module_config['controller'];
 		$_data['ajax_uri']		= 'content';
 		$_data['template']		= 'backoffice/tpl_module_index';
 		$_data['page']			= 'upload';
@@ -69,7 +66,6 @@ class Upload extends IIC_Controller
 										'label'			=>$this->lang->line('name'),	
 										'is_criteria'	=> TRUE
 									  ));
-		
 		// Set pagination
 		$this->load->library('pagination');
 		
@@ -108,4 +104,4 @@ class Upload extends IIC_Controller
 
 
 /* End of file upload.php */
-/* Location: application/modules/upload/controllers/upload.php */
+/* Location: application/modules/backoffice/controllers/upload.php */
