@@ -9,15 +9,20 @@ class Sample extends IIC_Controller
 	{
 		parent::__construct();
 		
-		// Load model
-		$this->load->model('sample_model');
-		
 		// Set variable
 		$this->module_config['module'] = 'sample';
 		$this->module_config['controller'] = 'sample';
 		$this->module_config['form'] = 'sample_form';
 		
+		// Load model
+		$this->load->model($this->module_config['controller'].'_model');
 		$this->content_model = $this->sample_model;
+		
+		// Load language
+		$this->lang->load(
+							$this->module_config['module'], 
+							$this->config->item('backoffice_language')
+						 );
 	}
 	
 	// ------------------------------------------------------------------------
@@ -37,11 +42,11 @@ class Sample extends IIC_Controller
 		
 		// Set module
 		$_data['module']		= $this->module_config['module'];
-		$_data['controller']	= $this->module_config['module'];
+		$_data['controller']	= $this->module_config['controller'];
 		$_data['ajax_uri']		= 'content';
 		$_data['template']		= 'backoffice/tpl_module_index';
 		$_data['page']			= 'sample';
-		$_data['title']			= $this->lang->line('sample_page');
+		$_data['title']			= $this->lang->line('page_sample');
 		
 		// Set navigator
 		$_data['navigator'] = array();
@@ -50,7 +55,7 @@ class Sample extends IIC_Controller
 												'link'	=> 'backoffice'
 											  ));
 		array_push($_data['navigator'], array(
-												'label' => $this->lang->line(''),	
+												'label' => $this->lang->line('page_sample'),	
 												'link'	=> ''
 											  ));
 		
@@ -58,7 +63,7 @@ class Sample extends IIC_Controller
 		$_data['th'] = array();
 		array_push($_data['th'], array(
 										'axis'			=>'name',		
-										'label'			=>$this->lang->line('content_category'),	
+										'label'			=>$this->lang->line('name'),	
 										'is_criteria'	=> TRUE
 									  ));
 		array_push($_data['th'], array(
@@ -104,5 +109,5 @@ class Sample extends IIC_Controller
 }
 
 
-/* End of file sample_controller.php */
+/* End of file sample.php */
 /* Location: application/modules/sample/controllers/sample.php */
