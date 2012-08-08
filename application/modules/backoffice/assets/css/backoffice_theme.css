@@ -7,7 +7,7 @@
 	background: #D93A00 url(../img/bg_header.jpg);	
 	background-size: cover;
 	color: #FFF;
-	height: 80px;
+	height: 76px;
 	text-align: right;
 	padding: 10px;
 	position: relative;
@@ -18,7 +18,7 @@
 	font-size: 28px;
 	margin: 0px 0px 0px 10px;
 	font-weight: bold;
-	line-height: 80px;
+	line-height: 76px;
 	text-align: left;
 	float:left;
 	
@@ -46,9 +46,13 @@
 #header #logo
 {
 	position: absolute;
+	width: 128px;
+	height: 96px;
 	top: 0;
 	margin-left: -64px;
-	left: 50%
+	left: 50%;
+	background: url(../img/logo.png);	
+	background-size: cover;
 }
 
 /*------------------------------------------------------------------------*/

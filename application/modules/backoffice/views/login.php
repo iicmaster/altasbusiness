@@ -79,10 +79,7 @@ input[type=text], input[type=password] { width: 100%; }
 
 #header #logo
 {
-	position: absolute;
-	top: -148px;
-	margin-left: -100px;
-	left: 50%
+	top: -128px;
 }
 </style>
 </head>
@@ -91,7 +88,7 @@ input[type=text], input[type=password] { width: 100%; }
 <div class="table_cell">
 	<div class="gadget">
 		<div id="header">
-			<?php echo image_asset('logo_big.png', 'backoffice', array('alt'=>'Logo', 'id'=>'logo')); ?>
+			<div id="logo"></div>
 			<h2><?php echo $theme['header_text_1'] ?></h2>
 			<?php echo image_asset('line_gradient_300px.png', 'backoffice', array('alt'=>'line', 'width'=>'100%', 'height'=>'1')); ?>
 			<h3><?php echo $theme['header_text_2'] ?></h3>
