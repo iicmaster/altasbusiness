@@ -12,6 +12,7 @@ $theme = Modules::run('backoffice/theme/get_theme');
 <body id="<?php echo $page ?>">
 <div id="container">
 	<div id="header">
+		<?php echo image_asset('logo.png', 'backoffice', array('alt'=>'Logo', 'id'=>'logo')); ?>
 		<h1><?php echo $title ?></h1>
 		<h2><?php echo $theme['header_text_1'] ?></h2>
 		<?php echo image_asset('line_gradient_300px.png', 'backoffice', array('alt'=>'line')); ?>

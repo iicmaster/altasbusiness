@@ -7,6 +7,7 @@ body
 	display: table;
 	height: 100%;
 	width: 100%;
+	min-width: 768px;
 	position: absolute;
 	top: 0;
 	
@@ -320,16 +321,17 @@ body#Category .menu_main li#Category a
 /* Dialog */
 /*------------------------------------------------------------*/
 
-.ui-dialog  
-{ 
-	min-width: 400px;
-}
-
 .ui-dialog .ui-dialog-buttonpane button 
 {
 	margin-top: 13px;
 	margin-left: 0.4em;
 	margin-right: 0px;
+}
+
+.dialog.ui-dialog-content.ui-widget-content
+{
+	min-width: 400px;
+	overflow-y: scroll;
 }
 
 .dialog form 
@@ -338,7 +340,12 @@ body#Category .menu_main li#Category a
 	margin-left: -13px;
 }
 
-.ui-dialog #tabs { padding-right: 0px; margin: 5px 0px 0px -15px; }
+.ui-dialog #tabs 
+{ 
+	padding-right: 0px; 
+	margin: 5px 0px 15px -15px; 
+}
+
 .ui-dialog #tabs .ui-tabs-panel { padding-left: 10px; }
 
 .dialog input[type=text], 
@@ -387,6 +394,11 @@ body#Category .menu_main li#Category a
 	float: right;
 	height: 24px;
 	width: 24px;
+}
+
+.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix
+{
+	margin-top: 0px;
 }
 
 /*------------------------------------------------------------*/

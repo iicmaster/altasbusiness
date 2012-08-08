@@ -43,6 +43,7 @@ LANG_DISABLE = '<?php echo $this->lang->line('disable') ?>';
 <!--iic_tools assets-->
 <?php echo css_asset('iic_layout.css', 'iic_tools');?>
 <?php echo css_asset('iic_style.css', 'iic_tools');?>
+<?php echo js_asset('iic_utilities_helper.js', 'iic_tools');?>
 
 <!--Backoffice assets-->
 <?php echo css_asset('backoffice.css', 'backoffice');?>

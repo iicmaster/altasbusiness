@@ -7,7 +7,18 @@
 	<input type="hidden" id="config_uri_list" value="<?php echo $module ?>/<?php echo $controller ?>/list_<?php echo $ajax_uri; ?>" />
 	
 	<div id="content_top">
-		<button class="button_create"><?php echo $this->lang->line('create') ?></button>
+		<button class="button_create">
+		<?php
+		if(isset($button_create_label))
+		{
+			echo $button_create_label;
+		}
+		else 
+		{
+			echo $this->lang->line('create');
+		}
+		?>
+		</button>
 		<div id="search_section">
 			<input type="text" name="keyword" id="keyword" class="search_left" />
 			<label class="inline" for="criteria"><?php echo $this->lang->line('in') ?></label>

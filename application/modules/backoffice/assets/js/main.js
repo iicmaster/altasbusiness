@@ -194,7 +194,7 @@ $(function()
 		draggable	: false,
 		resizable	: false,
 		width		: 'auto',
-		height		: 'auto',
+		height		: 600,
 		modal		: true,
 		buttons		: [
 					  	  {
@@ -223,9 +223,9 @@ $(function()
 		autoOpen	: false,
 		draggable	: false,
 		resizable	: false,
-		minWidth	: 400,
 		width		: 'auto',
-		height		: 'auto',
+		height		: 600,
+		minWidth	: 400,
 		modal		: true,
 		buttons 	: [
 					  	  {
@@ -323,7 +323,8 @@ function get_create_form(url)
 	{
 		$('#dialog_create').html(response);
 		$('#dialog_create').dialog('open')
-	}).error(function()
+	})
+	.error(function()
 	{
 		var msg = 'Error: get_create_form(' + url + ')';
 		$('#dialog_alert_message').html(msg);
@@ -346,7 +347,8 @@ function get_update_form(url)
 	{
 		$('#dialog_update').html(response);
 		$('#dialog_update').dialog('open');
-	}).error(function()
+	})
+	.error(function()
 	{
 		var msg = 'Error: get_update_form(' + url + ')';
 		$('#dialog_alert_message').html(msg);
@@ -365,6 +367,8 @@ function adjust_layout()
 	
 	$('.dashboard').css('min-height', content_height - 50);
 }
+
+// ------------------------------------------------------------------------
 
 /**
  * Get content via ajax

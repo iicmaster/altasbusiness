@@ -31,11 +31,16 @@ $lang['page_log'] = 'บันทึกการใช้งานระบบ';
 // -------------------------------------------------------------------
 
 $lang['name'] = 'ชื่อ';
+$lang['first_name'] = 'ชื่อจริง';
+$lang['last_name'] = 'นามสกุล';
+$lang['nick_name'] = 'ชื่อเล่น';
 $lang['description'] = 'คำอธิบาย';
 $lang['username'] = 'ชื่อผู้ใช้งานระบบ';
 $lang['password'] = 'รหัสผ่าน';
 $lang['status'] = 'สถานะ';
 $lang['date'] = 'วันที่';
+$lang['email'] = 'อีเมลล์';
+$lang['id'] = 'รหัส';
 
 // -------------------------------------------------------------------
 // DIALOG
@@ -43,7 +48,7 @@ $lang['date'] = 'วันที่';
 
 $lang['dialog_access_denied'] = 'การเข้าถึงข้อมูลถึงปฏิเสธ';
 $lang['dialog_confirm_delete'] = 'ข้อมูลที่คุณเลือกจะถูกลบอย่างถาวร โดยไม่สามารถนำกลับมาได้ คุณต้องการลบใช่หรือไม่ ?';
-$lang['dialog_please_login_again'] = 'กรุณาลงชื่อเข้าสู่ระบบอีกครั้ง';
+$lang['dialog_please_login'] = 'กรุณาลงชื่อเข้าสู่ระบบ';
 $lang['dialog_logout_success'] = 'ลงชื่ออกจากระบบเสร็จสมบูรณ์';
 $lang['dialog_login_error'] = 'ชื่อผู้ใช้งาน หรือ รหัสผ่านผิด';
 $lang['dialog_permission_denied'] = 'You don\'t have permission to access this page';
