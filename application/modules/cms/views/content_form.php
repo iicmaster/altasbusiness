@@ -16,7 +16,7 @@ if(! isset($id))
 	</ul>
 	<div id="tabs-1">
 		<label for="id_category"><?php echo $this->lang->line('content_category') ?></label>
-		<select id="id_category" name="id_category" multiple="multiple" class="required">
+		<select id="id_category" name="id_category" class="required">
 			<option value="">-</option>
 			<?php echo Modules::run('cms/category/get_content_selectbox_option', $id_category); ?>
 		</select>
@@ -44,7 +44,7 @@ if(! isset($id))
 		<label for="attach_file_<?php echo $loop ?>">
 			<?php echo $this->lang->line('attach_file') ?> <?php echo $loop ?>
 		</label>
-		<input type="file" name="attach_file[]" id="attach_file_<?php echo $loop ?>"/>		
+		<input type="file" name="attach_file_<?php echo $loop ?>" id="attach_file_<?php echo $loop ?>"/>		
 	<?php endfor ?>
 	</div>
 	<input id="id_auther" name="id_author" type="hidden" value="<?php echo date('Y-m-d') ?>" />
