@@ -4,14 +4,17 @@
 */cache/*
 */cache/!index.html
 
-*/*.mp*	
+*/uploads/*
+uploads/*
+*/upload/*
+
+
 *.mp*
 
 *.bak
 *.lck
 *.LCK
-
 Thumbs.db
 _compareTemp/
-
 .project
+.settings
