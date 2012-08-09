@@ -12,7 +12,7 @@ class Sample extends IIC_Controller
 		// Set variable
 		$this->module_config['module'] = 'sample';
 		$this->module_config['controller'] = 'sample';
-		$this->module_config['form'] = 'sample_form';
+		$this->module_config['form'] = $this->module_config['controller'].'_form';
 		
 		// Load model
 		$this->load->model($this->module_config['controller'].'_model');
