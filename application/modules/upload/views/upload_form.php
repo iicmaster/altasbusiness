@@ -50,4 +50,5 @@ if(! isset($id))
 	<label for="image_size_str"><?php echo $this->lang->line('image_size_str') ?></label>
 	<input type="text" name="image_size_str" value="<?php echo $image_size_str ?>" id="image_size_str"/>
 	
+	<input id="id" name="id" type="hidden" value="<?php echo $id ?>" />
 </form>
