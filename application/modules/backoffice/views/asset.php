@@ -4,6 +4,7 @@ URL_SERVER = '<?php echo site_url() ?>/';
 URL_IMAGE = URL_SERVER + 'assets/modules/backoffice/img/';
 
 LANG_ALERT = '<?php echo $this->lang->line('alert') ?>';
+LANG_ERROR= '<?php echo $this->lang->line('error') ?>';
 LANG_CREATE = '<?php echo $this->lang->line('create') ?>';
 LANG_EDIT = '<?php echo $this->lang->line('edit') ?>';
 LANG_LOGIN = '<?php echo $this->lang->line('login') ?>';

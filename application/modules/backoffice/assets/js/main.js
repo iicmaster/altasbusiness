@@ -184,6 +184,27 @@ $(function()
 						  }
 					  ]
 	});
+	
+	/* Dialog error */
+	$('#dialog_error').dialog(
+	{
+		title		: LANG_ERROR,
+		autoOpen	: false,
+		draggable	: false,
+		resizable	: false,
+		width		: 890,
+		height		: 600,
+		modal		: false,
+		buttons		: [
+					  	  {
+							  text	: 'What the fuuuuuu... !!!',
+							  click	: function()
+									  {
+										  $(this).dialog("close");
+									  }
+						  }
+					  ]
+	});
 
 	/* Dialog create */
 
@@ -473,11 +494,20 @@ function create_content()
 	// Post-submit callback
 	function showResponse(responseText, statusText, xhr, $form)
 	{
-		get_content();
-
-		$('#preload').slideUp('fast');
-
-		dialog.dialog('close');
+		if(statusText == 200)
+		{
+			get_content();
+		
+			$('#preload').slideUp('fast');
+			
+			dialog.dialog('close');
+		}
+		else
+		{
+			$("#dialog_error").html(responseText)
+			$("#dialog_error").dialog('open');
+			$('#preload').slideUp('fast');
+		}
 	}
 
 	// Validate form

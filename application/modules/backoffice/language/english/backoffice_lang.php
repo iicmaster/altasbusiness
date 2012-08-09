@@ -5,7 +5,12 @@
 | -------------------------------------------------------------------
 */
 $lang['administration'] = 'Administration';
+
+$lang['alert'] = 'Alert';
+$lang['error'] = 'Error';
+
 $lang['create'] = 'Create';
+$lang['edit'] = 'Edit';
 $lang['delete'] = 'Delete';
 $lang['home'] = 'Home';
 $lang['in'] = 'in';

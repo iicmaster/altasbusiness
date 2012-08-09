@@ -40,6 +40,7 @@ $theme = Modules::run('backoffice/theme/get_theme');
 		<div id="dialog_alert" class="dialog">
 			<p><span class="ui-icon ui-icon-alert"></span><span id="dialog_alert_message"></span></p>
 		</div>
+		<div id="dialog_error" class="dialog"></div>
 		<div id="dialog_create" class="dialog"></div>
 		<div id="dialog_read" class="dialog"></div>
 		<div id="dialog_update" class="dialog"></div>
