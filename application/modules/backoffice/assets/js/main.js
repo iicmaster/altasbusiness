@@ -197,7 +197,7 @@ $(function()
 		modal		: false,
 		buttons		: [
 					  	  {
-							  text	: 'What the fuuuuuu... !!!',
+							  text	: '"WTF',
 							  click	: function()
 									  {
 										  $(this).dialog("close");
