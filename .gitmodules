@@ -1,0 +1,3 @@
+[submodule "application/modules/iic_tools"]
+	path = application/modules/iic_tools
+	url = git@github.com:infinity-imagine-corporation/iic_tools.git
