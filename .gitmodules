@@ -4,3 +4,6 @@
 [submodule "application/modules/_module_template"]
 	path = application/modules/_module_template
 	url = git@github.com:infinity-imagine-corporation/iic_framework_module_template.git
+[submodule "application/core"]
+	path = application/core
+	url = git@github.com:infinity-imagine-corporation/iic_framework_core.git
